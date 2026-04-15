@@ -1,0 +1,20 @@
+# Backups of original (uncompressed) PDFs — local only
+assets/catalogs/_originals/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / tools
+.claude/
+.vscode/
+.idea/
+*.swp
+
+# Node (if added later)
+node_modules/
+
+# Python byte-code
+__pycache__/
+*.pyc

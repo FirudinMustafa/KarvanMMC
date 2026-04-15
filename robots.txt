@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/catalogs/
+
+Sitemap: https://karvanmmc.az/sitemap.xml

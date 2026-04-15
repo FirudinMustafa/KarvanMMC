@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-label="Biota">
+  <style>
+    .bw{font:italic 600 60px/1 "Times New Roman",Georgia,serif;letter-spacing:.01em;fill:#2c5d3a}
+    .bt{font:500 11px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.36em;fill:#6b8a5f;text-transform:uppercase}
+  </style>
+  <path d="M90 22 q8 -14 22 -12 q-4 14 -22 14 z" fill="#6b8a5f"/>
+  <text x="160" y="60" text-anchor="middle" class="bw">Biota</text>
+  <text x="160" y="82" text-anchor="middle" class="bt">Botanic</text>
+</svg>
