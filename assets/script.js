@@ -35,18 +35,35 @@ if (header) {
 const burger = document.querySelector('.hamburger');
 const nav = document.querySelector('.nav');
 if (burger && nav) {
+  let lastFocus = null;
+  const navFocusables = () => nav.querySelectorAll('a[href], button:not([disabled])');
   const setOpen = (open) => {
     burger.classList.toggle('open', open);
     nav.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     document.body.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      lastFocus = document.activeElement;
+      const first = navFocusables()[0];
+      if (first) setTimeout(() => first.focus(), 100);
+    } else if (lastFocus && typeof lastFocus.focus === 'function') {
+      lastFocus.focus();
+      lastFocus = null;
+    }
   };
   burger.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
   nav.querySelectorAll('a').forEach(a =>
     a.addEventListener('click', () => setOpen(false))
   );
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && nav.classList.contains('open')) setOpen(false);
+    if (!nav.classList.contains('open')) return;
+    if (e.key === 'Escape') { setOpen(false); return; }
+    if (e.key !== 'Tab') return;
+    const f = navFocusables();
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 }
 
@@ -219,13 +236,23 @@ if (form) {
 const lightbox = document.querySelector('.lightbox');
 if (lightbox) {
   const img = lightbox.querySelector('img');
-  const close = () => lightbox.classList.remove('open');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  let lbLastFocus = null;
+  const close = () => {
+    lightbox.classList.remove('open');
+    if (lbLastFocus && typeof lbLastFocus.focus === 'function') {
+      lbLastFocus.focus();
+      lbLastFocus = null;
+    }
+  };
   const open = g => {
     const src = g.querySelector('img');
     if (!src) return;
+    lbLastFocus = document.activeElement;
     img.src = src.src;
     img.alt = src.alt || '';
     lightbox.classList.add('open');
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
   };
   document.querySelectorAll('.gal').forEach(g => {
     g.addEventListener('click', () => open(g));
@@ -239,7 +266,9 @@ if (lightbox) {
   lightbox.addEventListener('click', e => {
     if (e.target === lightbox || e.target.closest('.lightbox-close')) close();
   });
-  document.addEventListener('keydown', e => e.key === 'Escape' && close());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) close();
+  });
 }
 
 /* ========== YEAR ========== */
@@ -426,6 +455,7 @@ document.querySelectorAll('[data-year]').forEach(el => (el.textContent = new Dat
       const k = document.createElement('div');
       k.className = 'k' + (outline ? ' out' : '');
       const full = [...words, ...words];
+      // SAFE: `words` is a static const array above — no user input reaches innerHTML.
       k.innerHTML = full.map(w => `<span>${w}</span><span class="dot"></span>`).join('');
       row.appendChild(k);
       return row;
@@ -474,6 +504,7 @@ document.querySelectorAll('[data-year]').forEach(el => (el.textContent = new Dat
     const full = phrase.concat(phrase).concat(phrase).join('');
     const wrap = document.createElement('div');
     wrap.className = 'hquote';
+    // SAFE: `full` is built from the static `phrase` array above — no user input.
     wrap.innerHTML = `<div class="hquote-track">${full}</div>`;
     const inner = darkSec.querySelector('.wrap');
     if (inner) inner.appendChild(wrap);
@@ -608,6 +639,7 @@ document.querySelectorAll('[data-year]').forEach(el => (el.textContent = new Dat
       </svg>
       <div class="az-legend"><span class="dot"></span>5 regional filial</div>
     `;
+    // SAFE: `svg` is a hardcoded template literal — no user input reaches innerHTML.
     host.innerHTML = svg;
     host.classList.add('az-map','in'); // visible immediately
   }
@@ -659,6 +691,7 @@ document.querySelectorAll('[data-year]').forEach(el => (el.textContent = new Dat
     const btn = document.createElement('button');
     btn.className = 'theme-toggle';
     btn.setAttribute('aria-label','Qaranlıq/işıqlı rejim');
+    // SAFE: static SVG string, no user input.
     btn.innerHTML = `
       <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
       <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></svg>`;
