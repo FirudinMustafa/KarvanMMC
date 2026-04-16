@@ -1546,9 +1546,13 @@ html.dark .marquee{background:var(--paper);}
 html.dark .marquee::before{background:linear-gradient(90deg, var(--paper), transparent);}
 html.dark .marquee::after{background:linear-gradient(-90deg, var(--paper), transparent);}
 html.dark .brand-card:hover{background-color:rgba(176,122,43,.08);}
-html.dark .partner{background:var(--paper);}
-html.dark .partner img{filter:grayscale(1) contrast(.9) invert(.85);}
-html.dark .partner:hover img{filter:grayscale(0) contrast(1) invert(0);}
+html.dark .partner{background:var(--paper-2);}
+html.dark .partner img{
+  filter:grayscale(1) contrast(.9) invert(.9) brightness(1.15);
+  mix-blend-mode:normal;
+  opacity:.85;
+}
+html.dark .partner:hover img{filter:grayscale(0) contrast(1) invert(0) brightness(1); opacity:1; mix-blend-mode:normal;}
 html.dark .partner:hover{background:var(--cream);}
 html.dark .partner:hover .label{color:var(--ink-2);}
 html.dark .cat-item{background:var(--paper-2);}
