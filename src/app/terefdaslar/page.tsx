@@ -127,72 +127,69 @@ export default function TerefdaslarPage() {
             </div>
           </Reveal>
           <Reveal delay={0.2}>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-[var(--line)] bg-gradient-to-br from-[var(--paper-2)]/80 to-[var(--paper)]/40 backdrop-blur">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--paper-2)]/70 backdrop-blur">
               <div
                 aria-hidden
-                className="absolute inset-0 opacity-60"
+                className="absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(circle at 30% 25%, rgba(78,163,255,0.22), transparent 55%), radial-gradient(circle at 75% 80%, rgba(30,111,224,0.18), transparent 55%)",
+                    "radial-gradient(circle at 80% 15%, rgba(78,163,255,0.16), transparent 55%), radial-gradient(circle at 20% 85%, rgba(10,59,140,0.14), transparent 55%)",
                 }}
               />
+              <div className="absolute inset-x-8 top-8 flex items-center justify-between">
+                <span className="mono text-[10px] tracking-[0.3em] text-[var(--mute)] uppercase">
+                  Əhatə / 2025
+                </span>
+                <span className="mono text-[10px] tracking-[0.3em] text-[var(--blue-2)] uppercase">
+                  AZ
+                </span>
+              </div>
+
+              <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+                <span className="mono text-[10px] tracking-[0.4em] text-[var(--mute)] uppercase">
+                  Cəmi
+                </span>
+                <div className="mt-3 serif text-[clamp(4.5rem,14vw,7.5rem)] leading-[0.9] text-[var(--ink)] tabular-nums">
+                  5 088
+                  <span className="italic-serif text-[var(--blue-2)]">+</span>
+                </div>
+                <div className="mt-3 h-px w-24 bg-[var(--blue-2)]/60" />
+                <p className="mt-4 text-sm text-[var(--mute)] max-w-[22ch] leading-relaxed">
+                  müstəqil satış nöqtəsi —
+                  <br />
+                  <span className="italic-serif text-[var(--ink)]">kəndən şəhərə.</span>
+                </p>
+              </div>
+
+              <div className="absolute inset-x-8 bottom-8 flex items-end justify-between">
+                <div className="flex flex-col gap-0.5">
+                  <span className="mono text-[10px] tracking-[0.3em] text-[var(--mute)] uppercase">
+                    Şəbəkə
+                  </span>
+                  <span className="serif text-lg text-[var(--ink)]">12 zəncir</span>
+                </div>
+                <div className="flex flex-col gap-0.5 text-right">
+                  <span className="mono text-[10px] tracking-[0.3em] text-[var(--mute)] uppercase">
+                    Bölgə
+                  </span>
+                  <span className="serif text-lg text-[var(--ink)]">66 rayon</span>
+                </div>
+              </div>
+
               <svg
                 aria-hidden
                 viewBox="0 0 320 400"
-                className="absolute inset-0 h-full w-full"
+                className="pointer-events-none absolute inset-0 h-full w-full"
               >
-                <defs>
-                  <pattern id="pd-dots" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
-                    <circle cx="2" cy="2" r="1.1" fill="currentColor" opacity="0.18" />
-                  </pattern>
-                  <linearGradient id="pd-shop" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stopColor="#4EA3FF" />
-                    <stop offset="1" stopColor="#1E6FE0" />
-                  </linearGradient>
-                </defs>
-                <rect width="320" height="400" fill="url(#pd-dots)" className="text-[var(--blue-2)]" />
-                <g transform="translate(160 205)" stroke="url(#pd-shop)" strokeWidth="2.6" strokeLinejoin="round" strokeLinecap="round" fill="none">
-                  <path d="M-70 -60 L-60 -90 L60 -90 L70 -60 Z" fill="url(#pd-shop)" fillOpacity="0.18" />
-                  <path d="M-70 -60 L70 -60 L70 70 L-70 70 Z" fill="url(#pd-shop)" fillOpacity="0.08" />
-                  <path d="M-70 -60 L70 -60" />
-                  <path d="M-40 -60 L-40 -30 Q-40 -20 -55 -20 Q-70 -20 -70 -30 L-70 -60" />
-                  <path d="M-10 -60 L-10 -30 Q-10 -20 -25 -20 Q-40 -20 -40 -30 L-40 -60" />
-                  <path d="M20 -60 L20 -30 Q20 -20 5 -20 Q-10 -20 -10 -30 L-10 -60" />
-                  <path d="M50 -60 L50 -30 Q50 -20 35 -20 Q20 -20 20 -30 L20 -60" />
-                  <path d="M80 -60 L70 -60 L70 -30 Q70 -20 55 -20 Q50 -20 50 -20" />
-                  <rect x="-25" y="10" width="50" height="60" rx="2" fill="url(#pd-shop)" fillOpacity="0.2" />
-                  <path d="M-45 70 L-45 25 L-25 25" />
-                  <path d="M45 70 L45 25 L25 25" />
-                  <circle cx="18" cy="45" r="2.2" fill="url(#pd-shop)" />
-                </g>
                 <g fill="#1E6FE0">
-                  <circle cx="44" cy="70" r="3.5" opacity="0.7" />
-                  <circle cx="284" cy="58" r="2.8" opacity="0.55" />
-                  <circle cx="62" cy="342" r="3.0" opacity="0.6" />
-                  <circle cx="272" cy="330" r="3.8" opacity="0.75" />
-                  <circle cx="28" cy="200" r="2.4" opacity="0.5" />
-                  <circle cx="298" cy="210" r="2.6" opacity="0.5" />
-                  <circle cx="120" cy="46" r="2.0" opacity="0.45" />
-                  <circle cx="220" cy="366" r="2.2" opacity="0.5" />
-                </g>
-                <g fill="none" stroke="#1E6FE0" strokeWidth="0.8" opacity="0.25" strokeDasharray="2 4">
-                  <path d="M44 70 Q160 140 272 330" />
-                  <path d="M28 200 Q160 260 298 210" />
-                  <path d="M62 342 Q160 300 284 58" />
+                  <circle cx="32" cy="64" r="2.2" opacity="0.5" />
+                  <circle cx="288" cy="88" r="1.8" opacity="0.45" />
+                  <circle cx="44" cy="336" r="2.0" opacity="0.5" />
+                  <circle cx="276" cy="320" r="2.4" opacity="0.55" />
+                  <circle cx="160" cy="24" r="1.4" opacity="0.4" />
+                  <circle cx="160" cy="376" r="1.4" opacity="0.4" />
                 </g>
               </svg>
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-                <div>
-                  <span className="mono text-[10px] tracking-[0.3em] text-[var(--mute)] uppercase">
-                    Əhatə
-                  </span>
-                  <p className="serif text-3xl text-[var(--ink)] mt-1">5 088+</p>
-                  <p className="text-xs text-[var(--mute)]">satış nöqtəsi</p>
-                </div>
-                <span className="mono text-[10px] tracking-[0.3em] text-[var(--blue-2)] uppercase">
-                  AZ · hər bölgə
-                </span>
-              </div>
             </div>
           </Reveal>
         </div>

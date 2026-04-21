@@ -1,18 +1,23 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { OFFICES, DEALERS } from "@/lib/data";
 
-export default function AzMapClient({ svg }: { svg: string }) {
+export default function AzMapClient() {
   const [active, setActive] = useState<string | null>("baku");
 
   return (
     <div className="relative w-full rounded-3xl border border-[var(--line)] bg-[var(--paper-2)]/60 backdrop-blur p-4 md:p-8 shadow-[var(--shadow-md)]">
-      <div className="relative aspect-[1000/700] w-full">
-        <div
-          className="absolute inset-0 [&_svg]:h-full [&_svg]:w-full"
-          dangerouslySetInnerHTML={{ __html: svg }}
+      <div className="relative aspect-[1600/1226] w-full">
+        <Image
+          src="/map/azerbaijan.png"
+          alt="Azərbaycan xəritəsi"
+          fill
+          priority
+          sizes="(min-width:1280px) 1200px, (min-width:768px) 90vw, 100vw"
+          className="object-contain dark:opacity-90"
         />
 
         {DEALERS.map((d, i) => (
