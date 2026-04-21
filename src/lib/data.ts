@@ -82,27 +82,27 @@ export type Office = {
   y: number;
 };
 
-// Coordinates projected from lat/lon onto the Wikipedia Azerbaijan location map
-// (N 42.0°, S 38.2°, W 44.5°, E 51.0°), then remapped into the cropped
-// viewBox "40 10 1090 870" used by AzMapClient so the country centers visually.
-// Percentages are of the cropped 1090×870 viewBox.
+// Coordinates projected from real lat/lon onto the new Azerbaijan map SVG.
+// viewBox 0 0 1000 700, bounds: W 44.6°E, E 50.7°E, N 42.0°N, S 38.3°N.
+//   x% = (lon - 44.6) / 6.1 × 100
+//   y% = (42.0 - lat) / 3.7 × 100
 export const OFFICES: Office[] = [
-  { slug: "baku", city: "Bakı", type: "HQ", role: "Mərkəz · Məhəmmədi qəsəbəsi", x: 87.3, y: 43.1 },
-  { slug: "gence", city: "Gəncə", type: "Branch", role: "Qərb regionu", x: 27.8, y: 35.5 },
-  { slug: "mingecevir", city: "Mingəçevir", type: "Branch", role: "Aran regionu", x: 39.5, y: 33.1 },
-  { slug: "quba", city: "Quba", type: "Branch", role: "Şimal regionu", x: 64.5, y: 16.6 },
-  { slug: "celilabad", city: "Cəlilabad", type: "Branch", role: "Cənub regionu", x: 63.9, y: 76.5 },
+  { slug: "baku", city: "Bakı", type: "HQ", role: "Mərkəz · Məhəmmədi qəsəbəsi", x: 86.7, y: 43.8 },
+  { slug: "gence", city: "Gəncə", type: "Branch", role: "Qərb regionu", x: 28.9, y: 35.7 },
+  { slug: "mingecevir", city: "Mingəçevir", type: "Branch", role: "Aran regionu", x: 40.2, y: 33.2 },
+  { slug: "quba", city: "Quba", type: "Branch", role: "Şimal regionu", x: 64.3, y: 17.0 },
+  { slug: "celilabad", city: "Cəlilabad", type: "Branch", role: "Cənub regionu", x: 63.9, y: 75.4 },
 ];
 
 export type DealerCluster = { city: string; count: string; x: number; y: number };
 
 export const DEALERS: DealerCluster[] = [
-  { city: "Sumqayıt", count: "310", x: 83.9, y: 38.0 },
-  { city: "Şirvan", count: "165", x: 71.2, y: 56.4 },
-  { city: "Şəki", count: "220", x: 41.6, y: 21.1 },
-  { city: "Lənkəran", count: "285", x: 70.0, y: 89.1 },
-  { city: "Tovuz", count: "140", x: 15.3, y: 26.8 },
-  { city: "Şamaxı", count: "95", x: 66.5, y: 36.9 },
+  { city: "Sumqayıt", count: "310", x: 82.8, y: 38.1 },
+  { city: "Şirvan", count: "165", x: 70.8, y: 55.9 },
+  { city: "Şəki", count: "220", x: 42.1, y: 21.9 },
+  { city: "Lənkəran", count: "285", x: 69.7, y: 87.8 },
+  { city: "Tovuz", count: "140", x: 16.7, y: 27.3 },
+  { city: "Şamaxı", count: "95", x: 66.1, y: 37.0 },
 ];
 
 export type CatalogItem = {

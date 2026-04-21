@@ -4,33 +4,15 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { OFFICES, DEALERS } from "@/lib/data";
 
-const GRADIENT_DEFS = `<defs>
-  <linearGradient id="azFill" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#1E6FE0" stop-opacity="0.18" />
-    <stop offset="50%" stop-color="#4EA3FF" stop-opacity="0.26" />
-    <stop offset="100%" stop-color="#1E6FE0" stop-opacity="0.14" />
-  </linearGradient>
-</defs>`;
-
-function prepareSvg(raw: string): string {
-  return raw
-    .replace(/viewBox="[^"]*"/, `viewBox="40 10 1090 870"`)
-    .replace(
-      /<svg([^>]+)>/,
-      `<svg$1 class="azmap-svg" preserveAspectRatio="xMidYMid meet">${GRADIENT_DEFS}`,
-    );
-}
-
 export default function AzMapClient({ svg }: { svg: string }) {
   const [active, setActive] = useState<string | null>("baku");
-  const html = prepareSvg(svg);
 
   return (
     <div className="relative w-full rounded-3xl border border-[var(--line)] bg-[var(--paper-2)]/60 backdrop-blur p-4 md:p-8 shadow-[var(--shadow-md)]">
-      <div className="relative aspect-[1090/870] w-full">
+      <div className="relative aspect-[1000/700] w-full">
         <div
           className="absolute inset-0 [&_svg]:h-full [&_svg]:w-full"
-          dangerouslySetInnerHTML={{ __html: html }}
+          dangerouslySetInnerHTML={{ __html: svg }}
         />
 
         {DEALERS.map((d, i) => (
